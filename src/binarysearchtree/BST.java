@@ -81,7 +81,7 @@ public class BST<T extends Comparable<? super T>> {
     }
 
     protected void visit(BSTNode<T> p) {
-        System.out.println(p.el + "");
+        System.out.print(p.el + " ");
     }
 
     protected void inorder(BSTNode<T> p) {
@@ -391,26 +391,31 @@ public class BST<T extends Comparable<? super T>> {
         }
         if (level > 0) {
             for (int i = 0; i < level - 1; i++) {
-                System.out.println("   ");
+                System.out.print("   ");
             }
+            System.out.print("|__");
+
         }
         System.out.println(p.el);
-        visit_align(p.left, level+1);
-        visit_align(p.right, level+1);
+        visit_align(p.left, level + 1);
+        visit_align(p.right, level + 1);
     }
-    public void print_align () {
+
+    public void print_align() {
         visit_align(root, 0);
     }
+
     public void insertBalance(T data[], int first, int last) {
         if (first <= last) {
-            int middle = (first + last)/2;
+            int middle = (first + last) / 2;
             insert(data[middle]);
-            insertBalance(data, first, middle-1);
-            insertBalance(data, middle+1, last);
+            insertBalance(data, first, middle - 1);
+            insertBalance(data, middle + 1, last);
         }
     }
+
     public void insertBalance(T data[]) {
-        insertBalance(data, 0, data.length-1);
+        insertBalance(data, 0, data.length - 1);
     }
 
 }
